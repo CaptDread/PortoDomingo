@@ -6,10 +6,10 @@ if (!MONGODB_URI) {
     throw new Error('Please define the MONGODB_URI environment variable');
   }
   
-  let cached = (global as unknown).mongoose;
+  let cached = (global instanceof any).mongoose;
   
   if (!cached) {
-    cached = (global as unknown).mongoose = { conn: null, promise: null };
+    cached = (global instanceof any).mongoose = { conn: null, promise: null };
   }
   
   async function connectToDatabase() {
